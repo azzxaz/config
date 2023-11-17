@@ -1,0 +1,12 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failure-rate-threshold: 40
+        minimum-number-of-calls: 20 # 20번 이상 오류 발생 후 20% 실패했을 때 circuit open
+        slow-call-duration-threshold: 1000
+        slow-call-rate-threshold: 20 # 호출 시간이 1초이상 오류 발생 후 20% 실패했을 때 circuit open
+        wait-duration-in-open-state: 30000 # open에서 half-open 전환 전 기다리는 시간
+        permitted-number-of-calls-in-half-open-state: 10 # half-open에서 circuit close 또는 open 판단하기 위한 호출 수
+        automatic-transition-from-open-to-half-open-enabled: true
+        register-health-indicator: true
